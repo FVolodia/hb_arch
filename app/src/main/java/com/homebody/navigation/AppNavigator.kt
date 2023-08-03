@@ -6,6 +6,8 @@ import com.homebody.features.auth.Auth
 import com.homebody.features.auth.AuthNavigator
 import com.homebody.features.feature1.Feature1Navigator
 import com.homebody.features.feature1.Feauture1
+import com.homebody.features.home.Home
+import com.homebody.features.home.HomeNavigator
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +20,8 @@ import org.koin.core.annotation.Single
 @Single
 class AppNavigator(
     private val authNavigator: AuthNavigator,
-    private val feature1Navigator: Feature1Navigator
+    private val feature1Navigator: Feature1Navigator,
+    private val homeNavigator: HomeNavigator
 ) {
 
     private var navController: NavController? = null
@@ -54,6 +57,7 @@ class AppNavigator(
         return when (route) {
             Auth.path -> authNavigator
             Feauture1.path -> feature1Navigator
+            Home.path -> homeNavigator
             else -> throw IllegalStateException("Current route '$route' is not associated with a FeatureNavigator")
         }
     }
