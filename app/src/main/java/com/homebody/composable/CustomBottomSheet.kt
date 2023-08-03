@@ -27,7 +27,6 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.homebody.R
-import com.homebody.ui.theme.bottomSheetBackgroundColors
 import com.homebody.ui.theme.roundedTopBorder
 import kotlinx.coroutines.launch
 
@@ -36,7 +35,7 @@ import kotlinx.coroutines.launch
 fun CustomBottomSheet(
     modifier: Modifier = Modifier,
     sheetState: SheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
-    containerColor: Color = MaterialTheme.colorScheme.bottomSheetBackgroundColors,
+    containerColor: Color = MaterialTheme.colorScheme.background,
     scrimColor: Color = BottomSheetDefaults.ScrimColor,
     shape: Shape = MaterialTheme.shapes.roundedTopBorder,
     onDismissAction: () -> Unit = {},
