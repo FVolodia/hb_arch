@@ -2,7 +2,6 @@ package com.homebody.composable
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -28,6 +28,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.homebody.ui.theme.AppTheme
+import com.homebody.ui.theme.disabled
 
 /**
  * Created by kkovalenko on 03.08.2023
@@ -48,7 +50,7 @@ fun BaseInputField(
     suffix: @Composable (() -> Unit)? = null,
     onValueChange: (String) -> Unit,
 ) {
-    // TODO: Set correct styles and colors when available
+    // TODO: Set correct styles when available
     Column(
         verticalArrangement = Arrangement.spacedBy(4.dp),
         horizontalAlignment = Alignment.Start
@@ -71,8 +73,11 @@ fun BaseInputField(
             colors = TextFieldDefaults.colors(
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                cursorColor = Color.Transparent,
-                disabledTextColor = Color.Transparent,
+                cursorColor = MaterialTheme.colorScheme.secondary,
+                disabledTextColor = MaterialTheme.colorScheme.onBackground.disabled,
+                focusedContainerColor = MaterialTheme.colorScheme.background,
+                unfocusedContainerColor = MaterialTheme.colorScheme.background,
+                errorContainerColor = MaterialTheme.colorScheme.errorContainer
             ),
             isError = isError,
             enabled = enabled,
@@ -83,7 +88,10 @@ fun BaseInputField(
             modifier = modifier
                 .border(
                     width = 1.dp,
-                    color = Color.Black,
+                    color = when (isError) {
+                        true -> MaterialTheme.colorScheme.onErrorContainer
+                        false -> MaterialTheme.colorScheme.outlineVariant
+                    },
                     shape = RoundedCornerShape(size = 8.dp)
                 )
                 .fillMaxWidth()
@@ -96,42 +104,44 @@ fun BaseInputField(
 @Preview
 @Composable
 fun BaseInputFieldPreview() {
-    Surface {
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            BaseInputField(label = "Test", value = "email@email.com", onValueChange = {})
-            BaseInputField(value = "Textfield with no label", onValueChange = {})
-            BaseInputField(
-                label = "Password",
-                value = "Some test value with an error",
-                isError = true,
-                visualTransformation = PasswordVisualTransformation(),
-                trailingIcon = {
-                    Icon(
-                        imageVector = Icons.Rounded.Clear,
-                        contentDescription = null,
-                    )
-                },
-                onValueChange = {},
-            )
-            BaseInputField(
-                label = "Error",
-                value = "Some test value with an error",
-                isError = true,
-                suffix = {
-                    Row {
+    AppTheme {
+        Surface {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                BaseInputField(label = "Test", value = "email@email.com", onValueChange = {})
+                BaseInputField(value = "Textfield with no label", onValueChange = {})
+                BaseInputField(
+                    label = "Password",
+                    value = "Some test value with an error",
+                    isError = true,
+                    visualTransformation = PasswordVisualTransformation(),
+                    trailingIcon = {
                         Icon(
-                            imageVector = Icons.Rounded.Lock,
+                            imageVector = Icons.Rounded.Clear,
                             contentDescription = null,
-                            tint = Color(0xFFE42127)
                         )
-                        Spacer(modifier = Modifier.width(2.dp))
-                        Text(
-                            text = "Invalid credentials",
-                        )
-                    }
-                },
-                onValueChange = {},
-            )
+                    },
+                    onValueChange = {},
+                )
+                BaseInputField(
+                    label = "Error",
+                    value = "Some test value with an error",
+                    isError = true,
+                    suffix = {
+                        Row {
+                            Icon(
+                                imageVector = Icons.Rounded.Lock,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.error
+                            )
+                            Spacer(modifier = Modifier.width(2.dp))
+                            Text(
+                                text = "Invalid credentials",
+                            )
+                        }
+                    },
+                    onValueChange = {},
+                )
+            }
         }
     }
 }

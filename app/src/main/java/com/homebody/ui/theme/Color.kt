@@ -78,3 +78,7 @@ val ColorScheme.bottomSheetBackgroundColors: Color
 val ColorScheme.expireWarningColor: Color
     @Composable
     get() = Color(0xFFFFD752)
+
+val Color.disabled: Color
+    @Composable
+    get() = this.copy(.38f)
