@@ -11,11 +11,14 @@ import org.koin.dsl.module
 //todo: split modules (viewModelsModule, navigatorsModule, etc)
 //Official documentation - https://insert-koin.io/docs/reference/koin-compose/compose
 //val appModules = listOf(AppModule().module)
-val appModules = module {
-    viewModel { LoginViewModel() }
-    viewModel { DashboardViewModel() }
-    viewModel { PaymentsViewModel() }
-}
+val appModules = listOf(
+    module {
+        viewModel { LoginViewModel() }
+        viewModel { DashboardViewModel() }
+        viewModel { PaymentsViewModel() }
+    },
+    apiModule
+)
 
 @Module
 @ComponentScan
