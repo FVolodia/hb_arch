@@ -2,32 +2,83 @@ package com.homebody.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.Composable
 
-val PrimaryColor = Color(0xFF004B37)
-val SecondaryColor = Color(0xFF70FC8D)
-val OnPrimary = Color(0xFFFDFDFD)
-val PrimaryContainerLight = Color(0xFFEBF1EF)
-val PrimaryContainerDark = Color(0xFF1E1E1E)
-val OnPrimaryContainerLight = Color(0xFF007E5C)
-val OnPrimaryContainerDark = Color(0xFF019D74)
-val OnSecondaryColor = Color(0xFF292929)
-val BackgroundLight = Color(0xFFD9D9D9)
-val BackgroundDark = Color(0xFF292929)
-val OnBackgroundLight = Color(0xFF292929)
-val OnBackgroundDark = Color(0xFFF1F1F1)
-val SurfaceLight = Color(0xFFFFFFFF)
-val SurfaceDark = Color(0xFF1E1E1E)
-val ErrorContainerLight = Color(0xFFF7DDDE)
-val onErrorLight = Color(0xFFE27C82)
-val onErrorDark = Color(0xFFE27C82)
+private val primary = Color(0xFF70FC8D)
+private val onPrimary = Color(0xFF292929)
+private val secondary = Color(0xFF004B37)
+private val onSecondary = Color(0xFFFDFDFD)
+private val secondaryContainer = Color(0xFFEBF1EF)
+private val onSecondaryContainer = Color(0xFF004B37)
+private val error = Color(0xFFE42127)
+private val errorContainer = Color(0xFFF7DDDE)
+private val onError = Color(0xFFEBF1EF)
+private val onErrorContainer = Color(0xFFE27C82)
+private val background = Color(0xFFFDFDFD)
+private val onBackground = Color(0xFF292929)
+private val surface = Color(0xFFFFFFFF)
+private val onSurface = Color(0xFF292929)
+private val outline = Color(0xFF7A7A7A)
+private val outlineVariant = Color(0xFFCCCCCC)
+private val inverseOnSurface = Color(0xFFFFFFFF)
+private val inverseSurface = Color(0xFF292929)
+private val scrim = Color(0xD8292929)
 
+
+val HomebodyLightColors = lightColorScheme(
+    primary = primary,
+    onPrimary = onPrimary,
+    secondary = secondary,
+    onSecondary = onSecondary,
+    secondaryContainer = secondaryContainer,
+    onSecondaryContainer = onSecondaryContainer,
+    background = background,
+    onBackground = onBackground,
+    surface = surface,
+    onSurface = onSurface,
+    inverseSurface = inverseSurface,
+    inverseOnSurface = inverseOnSurface,
+    error = error,
+    onError = onError,
+    errorContainer = errorContainer,
+    onErrorContainer = onErrorContainer,
+    outline = outline,
+    outlineVariant = outlineVariant,
+    scrim = scrim
+)
+
+val HomebodyDarkColors = lightColorScheme(
+    primary = primary,
+    onPrimary = onPrimary,
+    secondary = secondary,
+    onSecondary = onSecondary,
+    secondaryContainer = secondaryContainer,
+    onSecondaryContainer = onSecondaryContainer,
+    background = background,
+    onBackground = onBackground,
+    surface = surface,
+    onSurface = onSurface,
+    inverseSurface = inverseSurface,
+    inverseOnSurface = inverseOnSurface,
+    error = error,
+    onError = onError,
+    errorContainer = errorContainer,
+    onErrorContainer = onErrorContainer,
+    outline = outline,
+    outlineVariant = outlineVariant,
+    scrim = scrim
+)
 
 val ColorScheme.bottomSheetBackgroundColors: Color
     @Composable
-    get() = if (!isSystemInDarkTheme()) OnPrimary else PrimaryContainerDark
+    get() = if (!isSystemInDarkTheme()) background else surface
 
 val ColorScheme.expireWarningColor: Color
     @Composable
     get() = Color(0xFFFFD752)
+
+val Color.disabled: Color
+    @Composable
+    get() = this.copy(.38f)
