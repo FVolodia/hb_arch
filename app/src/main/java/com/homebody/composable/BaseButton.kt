@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import com.homebody.R
 
 @Composable
-fun BaseButton(
+fun BaseFilledButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
