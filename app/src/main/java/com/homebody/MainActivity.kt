@@ -3,35 +3,16 @@ package com.homebody
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
-import androidx.navigation.NavGraphBuilder
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.homebody.features.auth.LoginScreen
-import com.homebody.features.auth.authNavGraph
-import com.homebody.features.dashboard.DashboardScreen
-import com.homebody.features.feature1.feature1Graph
-import com.homebody.features.home.homeGraph
-import com.homebody.navigation.AppNavigator
-import com.homebody.navigation.AppRoute
+import com.homebody.navigation.MainNavigation
 import com.homebody.ui.theme.AppTheme
-import org.koin.android.ext.android.get
-import com.homebody.features.feature1.Feauture1
-import com.homebody.features.home.Home
 
 class MainActivity : ComponentActivity() {
-
-    private val navGraphBuilder: NavGraphBuilder.() -> Unit = {
-        authNavGraph()
-        feature1Graph()
-        homeGraph()
-    }
-
-    private val startRoute: AppRoute = Home
-
-    private val appNavigator: AppNavigator = get()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -44,8 +25,7 @@ class MainActivity : ComponentActivity() {
                 )
             }
             AppTheme {
-//                LoginScreen()
-                DashboardScreen(startRoute, navGraphBuilder, appNavigator)
+                MainNavigation(modifier = Modifier.statusBarsPadding())
             }
         }
     }

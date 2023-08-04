@@ -10,8 +10,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 
 internal class LoginViewModel(
-//    private val authManager: AuthManager,
-    private val authNavigator: AuthNavigator,
 ) : BaseViewModel<LoginUiState>(), LoginUiEvents {
 
     private val loadingState: MutableStateFlow<Boolean> = MutableStateFlow(false)
