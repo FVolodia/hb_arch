@@ -79,6 +79,10 @@ val ColorScheme.expireWarningColor: Color
     @Composable
     get() = Color(0xFFFFD752)
 
+val ColorScheme.linkColor: Color
+    @Composable
+    get() = Color(0xFF007E5C)
+
 val Color.disabled: Color
     @Composable
     get() = this.copy(.38f)

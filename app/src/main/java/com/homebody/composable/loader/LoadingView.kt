@@ -1,4 +1,4 @@
-package com.homebody.composable
+package com.homebody.composable.loader
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
