@@ -16,14 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.homebody.R
+import com.homebody.ui.theme.AppTheme
 
 @Composable
 fun BaseFilledButton(
@@ -31,14 +27,7 @@ fun BaseFilledButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     textColor: Color = MaterialTheme.colorScheme.onPrimary,
-    textStyle: TextStyle = TextStyle(
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        fontFamily = FontFamily(Font(R.font.inter_medium)),
-        fontWeight = FontWeight(600),
-        color = textColor,
-        textAlign = TextAlign.Center,
-    ),
+    textStyle: TextStyle = MaterialTheme.typography.labelLarge,
     enabled: Boolean = true,
     shape: Shape = MaterialTheme.shapes.extraLarge,
     backgroundColor: Color = MaterialTheme.colorScheme.primary,
@@ -79,5 +68,17 @@ fun BaseFilledButton(
                 style = textStyle
             )
         }
+    }
+}
+
+@Preview
+@Composable
+fun ButtonFilledPreview() {
+    AppTheme {
+        BaseFilledButton(
+            text= "Button text",
+            onClick = {},
+            textColor = Color.Red
+        )
     }
 }
