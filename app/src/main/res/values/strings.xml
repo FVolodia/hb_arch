@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">HB</string>
+    <string name="home">Home</string>
+    <string name="insurance">Insurance</string>
+    <string name="profile">Profile</string>
+    <string name="homebody">Homebody</string>
+    <string name="menu">Menu</string>
+    <string name="renters_insurance">Renters insurance</string>
+    <string name="pet_insurance">Pet insurance</string>
+    <string name="payment_policy">Policy: %s</string>
+    <string name="payment_due">Payment due</string>
+    <string name="amount">Amount</string>
+    <string name="method">Method</string>
+    <string name="edit_on_homebody">Edit on Homebody.com</string>
+    <string name="upcoming_payments">Upcoming payments</string>
+    <string name="expire_card_description">Your Visa ending in %s expires on %s. Update your payment information to keep your renters insurance coverage active.</string>
+    <string name="your_card_is_about_to_expire">Your card is about to expire!</string>
 </resources>

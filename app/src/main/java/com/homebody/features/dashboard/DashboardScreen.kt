@@ -13,7 +13,9 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.homebody.composable.LoadingView
+import com.homebody.composable.loader.LoadingView
+import com.homebody.composable.bottomBar.BottomBar
+import com.homebody.composable.topBar.TopBar
 import com.homebody.core.ui.BaseScreen
 import com.homebody.features.dashboard.DashboardViewModel.DashboardUiState
 import com.homebody.navigation.AppNavigator
@@ -57,9 +59,11 @@ private fun DashboardView(
     val scrollBehavior = enterAlwaysScrollBehavior(rememberTopAppBarState())
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { },
+        topBar = {
+             TopBar(onMenuClick = { /*TODO open drawer*/ })
+        },
         bottomBar = {
-            //ADD bottomBar
+            BottomBar(items = state.items)
         }) { innerPadding ->
         NavHost(
             navController = navController,
