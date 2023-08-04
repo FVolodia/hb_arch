@@ -68,6 +68,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    //Accompanist
+    val accompanistVersion = "0.30.1"
+    implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
     //Koin
     implementation("io.insert-koin:koin-android:3.4.3")
     implementation("io.insert-koin:koin-annotations:1.2.2")
