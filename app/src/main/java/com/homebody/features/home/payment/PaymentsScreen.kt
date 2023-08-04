@@ -43,7 +43,7 @@ fun PaymentsScreenContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFFDFDFD))
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Text(
             text = stringResource(R.string.upcoming_payments),

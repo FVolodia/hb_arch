@@ -10,6 +10,7 @@ import androidx.navigation.NavGraphBuilder
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.homebody.features.auth.LoginScreen
 import com.homebody.features.auth.authNavGraph
+import com.homebody.features.dashboard.DashboardScreen
 import com.homebody.features.feature1.feature1Graph
 import com.homebody.features.home.homeGraph
 import com.homebody.navigation.AppNavigator
@@ -17,6 +18,7 @@ import com.homebody.navigation.AppRoute
 import com.homebody.ui.theme.AppTheme
 import org.koin.android.ext.android.get
 import com.homebody.features.feature1.Feauture1
+import com.homebody.features.home.Home
 
 class MainActivity : ComponentActivity() {
 
@@ -26,7 +28,7 @@ class MainActivity : ComponentActivity() {
         homeGraph()
     }
 
-    private val startRoute: AppRoute = Feauture1
+    private val startRoute: AppRoute = Home
 
     private val appNavigator: AppNavigator = get()
 
@@ -42,8 +44,8 @@ class MainActivity : ComponentActivity() {
                 )
             }
             AppTheme {
-                LoginScreen()
-                //DashboardScreen(startRoute, navGraphBuilder, appNavigator)
+//                LoginScreen()
+                DashboardScreen(startRoute, navGraphBuilder, appNavigator)
             }
         }
     }

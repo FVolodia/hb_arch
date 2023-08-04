@@ -17,7 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.homebody.R
 import com.homebody.composable.expiredCard.data.ExpiredCardData
+import com.homebody.ui.theme.expireWarningColor
 
 @Composable
 fun ExpiredCard(
@@ -34,7 +34,7 @@ fun ExpiredCard(
 ) {
     Card(
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFD752)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.expireWarningColor),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         modifier = modifier
             .fillMaxWidth()
@@ -44,14 +44,14 @@ fun ExpiredCard(
             modifier = modifier.padding(vertical = 16.dp, horizontal = 32.dp)
         ) {
             Text(
-                color = Color(0xFF292929),
+                color = MaterialTheme.colorScheme.onSurface,
                 text = stringResource(R.string.your_card_is_about_to_expire),
                 fontSize = 16.sp,
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                color = Color(0xFF292929),
+                color = MaterialTheme.colorScheme.onSurface,
                 text = stringResource(R.string.expire_card_description, data.cardEnding, data.expireDate),
                 fontSize = 11.sp,
                 style = MaterialTheme.typography.bodySmall
@@ -62,7 +62,7 @@ fun ExpiredCard(
                 modifier = Modifier.clickable { eventListener(ExpiredCardEvent.OnEditClick) }
             ) {
                 Text(
-                    color = Color(0xFF292929),
+                    color = MaterialTheme.colorScheme.onSurface,
                     text = stringResource(id = R.string.edit_on_homebody),
                     fontSize = 13.sp,
                     style = MaterialTheme.typography.titleMedium
@@ -71,7 +71,7 @@ fun ExpiredCard(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_arrow_left),
                     contentDescription = null,
-                    tint = Color(0xFF292929),
+                    tint = MaterialTheme.colorScheme.onSurface,
                 )
             }
         }

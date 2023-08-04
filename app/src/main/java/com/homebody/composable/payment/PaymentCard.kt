@@ -29,6 +29,7 @@ import com.homebody.R
 import com.homebody.composable.payment.data.PaymentData
 import com.homebody.composable.payment.data.PaymentItemData
 import com.homebody.ui.theme.AppTheme
+import com.homebody.ui.theme.linkColor
 
 @Composable
 fun PaymentCard(
@@ -38,7 +39,10 @@ fun PaymentCard(
 ) {
     Card(
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White,
+            contentColor = Color.White
+        ),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         modifier = modifier
             .fillMaxWidth()
@@ -56,12 +60,12 @@ fun PaymentCard(
                 Column {
                     Text(
                         text = stringResource(id = data.title),
-                        color = Color(0xFF292929),
+                        color = MaterialTheme.colorScheme.onSurface,
                         fontSize = 16.sp,
                         style = MaterialTheme.typography.titleLarge
                     )
                     Text(
-                        color = Color(0xFF292929),
+                        color = MaterialTheme.colorScheme.onSurface,
                         text = stringResource(id = R.string.payment_policy, data.policy),
                         fontSize = 13.sp,
                         style = MaterialTheme.typography.titleSmall
@@ -84,14 +88,14 @@ fun PaymentCard(
                 Text(
                     text = stringResource(id = R.string.edit_on_homebody),
                     fontSize = 13.sp,
-                    color = Color(0xFF007E5C),
+                    color = MaterialTheme.colorScheme.linkColor,
                     style = MaterialTheme.typography.titleMedium
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Icon(
                     painter = painterResource(id = R.drawable.ic_arrow_left),
                     contentDescription = "",
-                    tint = Color(0xFF007E5C)
+                    tint = MaterialTheme.colorScheme.linkColor
                 )
             }
         }
