@@ -5,7 +5,9 @@ import com.homebody.core.ui.UiState
 import com.homebody.features.dashboard.DashboardViewModel.DashboardUiState
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flowOf
+import org.koin.android.annotation.KoinViewModel
 
+@KoinViewModel
 class DashboardViewModel() : BaseViewModel<DashboardUiState>(), DashboardUiEvents {
 
     override val uiState: StateFlow<DashboardUiState>

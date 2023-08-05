@@ -17,7 +17,7 @@ import com.homebody.navigation.NavigationEvent
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun LoginScreen(
+fun LoginScreen(
     viewModel: LoginViewModel = koinViewModel(),
     navigationEvent: (NavigationEvent) -> Unit
 ) =

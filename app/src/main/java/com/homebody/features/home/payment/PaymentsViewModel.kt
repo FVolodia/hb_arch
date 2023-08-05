@@ -9,7 +9,9 @@ import com.homebody.features.home.payment.PaymentsViewModel.HomeUiState.Loading
 import com.homebody.features.home.payment.PaymentsViewModel.HomeUiState.Successes
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flowOf
+import org.koin.android.annotation.KoinViewModel
 
+@KoinViewModel
 class PaymentsViewModel : BaseViewModel<PaymentsViewModel.HomeUiState>() {
 
     override val uiState: StateFlow<HomeUiState> =
