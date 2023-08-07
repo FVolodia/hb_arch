@@ -13,15 +13,15 @@ fun MainNavigation(modifier: Modifier) {
     NavHost(
         modifier = modifier,
         navController = navController,
-        route = Graph.Root.rout,
-        startDestination = Graph.Auth.rout
+        route = Graph.Root.route,
+        startDestination = Graph.Auth.route
     ) {
         authNavGraph { navigationEvent ->
             when (navigationEvent) {
-                NavigationEvent.OpenDashboard -> navController.navigate(Screen.Dashboard.route)
+                NavigationEvent.OpenDashboard -> navController.navigate(Destination.Dashboard.route)
             }
         }
-        composable(route = Screen.Dashboard.route) {
+        composable(route = Destination.Dashboard.route) {
             DashboardScreen()
         }
     }
