@@ -4,9 +4,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.homebody.features.auth.LoginScreen
-import com.homebody.features.home.payment.PaymentsScreen
 
-enum class Graph(val rout: String) {
+enum class Graph(val route: String) {
     Root("root_graph"),
     Auth("auth_graph"),
     Dashboard("dashboard_graph"),
@@ -15,7 +14,7 @@ enum class Graph(val rout: String) {
     Profile("profile_graph"),
 }
 
-enum class Screen(val route: String) {
+enum class Destination(val route: String) {
     Onboarding("onboarding"),
     Login("login"),
     Signup("signup"),
@@ -35,21 +34,13 @@ enum class Screen(val route: String) {
 }
 
 fun NavGraphBuilder.authNavGraph(navigationEvent: (NavigationEvent) -> Unit) {
-    navigation(startDestination = Screen.Login.route, route = Graph.Auth.rout) {
-        composable(route = Screen.Onboarding.route) {
+    navigation(startDestination = Destination.Login.route, route = Graph.Auth.route) {
+        composable(route = Destination.Onboarding.route) {
 //            OnboardingScreen()
         }
 
-        composable(route = Screen.Login.route) {
+        composable(route = Destination.Login.route) {
             LoginScreen(navigationEvent = navigationEvent)
-        }
-    }
-}
-
-fun NavGraphBuilder.homeNavGraph() {
-    navigation(startDestination = Screen.Payments.route, route = Graph.Home.rout) {
-        composable(route = Screen.Payments.route) {
-            PaymentsScreen()
         }
     }
 }

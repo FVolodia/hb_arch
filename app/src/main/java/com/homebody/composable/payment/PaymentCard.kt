@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -29,6 +28,7 @@ import com.homebody.R
 import com.homebody.composable.payment.data.PaymentData
 import com.homebody.composable.payment.data.PaymentItemData
 import com.homebody.ui.theme.AppTheme
+import com.homebody.ui.theme.Shapes
 import com.homebody.ui.theme.linkColor
 
 @Composable
@@ -38,7 +38,7 @@ fun PaymentCard(
     modifier: Modifier = Modifier,
 ) {
     Card(
-        shape = RoundedCornerShape(16.dp),
+        shape = Shapes.large,
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
             contentColor = Color.White
