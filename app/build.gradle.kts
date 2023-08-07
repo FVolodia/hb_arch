@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.devtools.ksp")
 }
 
@@ -22,8 +23,13 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+            buildConfigField("String", "BASE_URL", "\"https://api.d05d0001.residentinsuredev.com/\"")
+        }
+        release {
+            isMinifyEnabled = true
+            buildConfigField("String", "BASE_URL", "\"https://api.d05d0001.residentinsuredev.com/\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -43,6 +49,7 @@ android {
         }
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {
@@ -56,10 +63,11 @@ android {
 }
 
 dependencies {
-
+    //Core
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     implementation("androidx.navigation:navigation-compose:2.6.0")
     //Compose
     implementation("androidx.activity:activity-compose:1.7.2")
@@ -76,7 +84,10 @@ dependencies {
     implementation("io.insert-koin:koin-annotations:1.2.2")
     implementation("io.insert-koin:koin-androidx-compose:3.4.6")
     ksp("io.insert-koin:koin-ksp-compiler:1.2.2")
-
+    //Networking
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     //Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

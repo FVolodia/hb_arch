@@ -2,14 +2,18 @@ package com.homebody.features.auth
 
 import com.homebody.core.ui.BaseViewModel
 import com.homebody.core.ui.UiState
+import com.homebody.domain.usecases.LoginUseCase
 import com.homebody.features.auth.LoginViewModel.LoginUiState
 import com.homebody.features.auth.LoginViewModel.LoginUiState.Loading
 import com.homebody.features.auth.LoginViewModel.LoginUiState.LogIn
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
+import org.koin.android.annotation.KoinViewModel
 
-internal class LoginViewModel(
+@KoinViewModel
+class LoginViewModel(
+    private val loginUseCase: LoginUseCase,
 ) : BaseViewModel<LoginUiState>(), LoginUiEvents {
 
     private val loadingState: MutableStateFlow<Boolean> = MutableStateFlow(false)
@@ -19,7 +23,7 @@ internal class LoginViewModel(
             .map { if (it) Loading else LogIn }
             .asState(LogIn)
 
-    internal sealed class LoginUiState : UiState {
+    sealed class LoginUiState : UiState {
         data object LogIn : LoginUiState()
         data object Loading : LoginUiState()
     }
@@ -33,7 +37,7 @@ internal class LoginViewModel(
     }
 }
 
-internal interface LoginUiEvents {
+interface LoginUiEvents {
     fun onLoginClicked(email: String, password: String)
     fun onSignupClicked()
 }
